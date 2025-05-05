@@ -1,0 +1,455 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>youtube</title>
+        <style>
+            body{
+                background: linear-gradient(to right , #fff200, #1a951a);
+            }
+            .Arial{
+                font-family: Arial;
+            }
+            .picture{
+                width: 100%;
+            }
+            
+            
+            .av{
+               
+                vertical-align: top;
+                
+            }
+            .ava{
+                width: 40px;
+                border-radius: 50px;
+                margin-top: 4px;
+                margin-right: 4px;
+                
+            }
+            .video-title{
+                font-weight:bold;
+                font-size: 15px ;
+                width: 200px;
+                line-height: 20px;
+                margin-bottom: 15pxpx;
+                margin-top: 0;
+            }
+            p{
+                font-family: Arial;
+                margin: 0 ;
+            }
+            .stats{
+                color: grey;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 12px;
+            }
+            .cards{
+                display: inline-block;
+                
+                margin-bottom: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+               
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            }
+            .search{
+                display: block;
+                width: 30px;
+                height: 40px;
+                flex:1;
+                font-size: 16px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: lightgrey; 
+                border-radius: 2px;
+                box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+            }
+            .search::placeholder{
+                font-family: Arial;
+                padding-left: 10px;
+            }
+        
+            .gap{
+                margin-top: 10px;
+                display: grid;
+                grid-template-columns: 50px 1fr;
+            }
+            .videos{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 20px;
+                row-gap: 20px;
+            }
+            @media (max-width: 750px) {
+                .videos{
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+            @media (min-width: 751px) and (max-width: 999px) {
+                .videos{
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
+            @media (max-width: 1000px) {
+                .videos{
+                    grid-template-columns: 1fr 1fr 1fr 1fr ;
+                }
+            }
+            body{
+                margin:0;
+            }
+            .header{
+                height: 50px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position:fixed ;
+                left: 0;
+                right: 0;
+                top: 0;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: rgb(240,240,240);
+                z-index: 100000000;
+            }
+            .left-section{
+                
+                 
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .middle-section{
+                margin-left: 70px;
+                margin-right: 35px;
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                max-width: 700px;
+                
+            }
+            .right-section{
+                width: 200px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                flex-shrink: 0;
+                
+                
+
+            }
+            .hamburger-menu{
+                width: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            .youtube{
+                width: 100px;
+                margin-left: 10px;
+            }
+            .searchicon{
+                width: 25px;
+                height: 25px;
+                
+            }
+            .voicesearchicon{
+                width: 20px;
+                
+            }
+            .search-button{
+                background-color: lightgrey;
+                border: none;
+                cursor: pointer;
+                margin-left: 1px;
+                height: 40px;
+                width: 60px;
+            }
+            .voice-search-button{
+
+                border: none;
+                cursor: pointer;
+                margin-left: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+            }
+            .iconsize{ 
+                height: 36px;
+                flex: 1;
+                
+
+            }
+            .my-channel{
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+            .sidebar{
+         
+                position: fixed;
+                left:0;
+                width: 80px;
+                top: 50px;
+                bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 0px;
+            }
+            .left-icon-size{
+                width:40px;
+                margin-top: 20px;
+
+            }
+            .left-button{
+                border: none;
+                width: 100%;
+                aspect-ratio: 1/1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+            .left-button:hover{
+                background-color: lightgray;
+            }
+            .time{
+                background-color: black;
+                color: white;
+                position: absolute;
+                bottom: 8px;
+                right:5px;
+                padding: 4px 8px; 
+       
+            }
+            .cards-picture{
+                position: relative;
+            }
+            .my-channel1{
+                position:relative;
+            }
+            .notifications{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                border-color: white;
+                border-width: 2px;
+                border-style: solid;
+                position:absolute;
+                top: 0px;
+                z-index: 100000000000000000000;
+                right: 0px;
+                background-color: red;
+            }
+            .sidebar div{
+                font-family: Arial;
+                font-size: 12px;
+                
+            }
+        </style>
+    </head>
+    <body style="
+    margin-top: 80px;
+    margin-left: 100px
+    "> 
+        
+    <div class="header">
+        <div class="left-section">
+            <img class="hamburger-menu" src="icons/hamburger-menu.svg" alt="">
+            <img class="youtube" src="icons/youtube-logo.svg" alt="">
+        </div>
+        <div class="middle-section">
+        <input type="text" class="search" placeholder="Search">
+        <button class="search-button">
+            <img class="searchicon" src="icons/search.svg" alt="">
+        </button>
+        <button class="voice-search-button">
+            <img class="voicesearchicon" src="icons/voice-search-icon.svg" alt="">
+        </button>
+     
+        </div>
+        <div class="right-section">
+            <img class="iconsize" src="icons/upload.svg" alt="">
+            <img class="iconsize" src="icons/youtube-apps.svg" alt="">
+            <div class="my-channel1">
+                <img class="iconsize" src="icons/notifications.svg" alt="">
+                <div class="notifications">
+                    3
+                </div>
+            </div>
+            <img class="my-channel" src="icons/my-channel.jpg" alt="">
+        </div>
+        
+
+    </div>
+
+    <div class="sidebar">
+        <button class="left-button">
+            <img class="left-icon-size" src="/icons/home.svg" alt="">
+            <div>Home</div>
+        </button >
+        <button class="left-button">
+            <img class="left-icon-size" src="/icons/explore.svg" alt="">
+            <div>Explore</div>
+        </button>
+        <button class="left-button">
+            <img class="left-icon-size" src="/icons/subscriptions.svg" alt="">
+            <div>Subscriptions</div>
+        </button>
+        <button class="left-button">
+            <img class="left-icon-size" src="icons/originals.svg" alt="">
+            <div>Originals</div>
+        </button>
+        <button class="left-button">
+            <img class="left-icon-size"  src="icons/youtube-music.svg" alt="">
+            <div>Youtube Music</div>
+        </button>
+        <button class="left-button">
+            <img class="left-icon-size" src="icons/library.svg" alt="">
+            <div>Library</div>
+        </button>
+    </div>
+    <div class="videos">
+
+    </div>
+
+
+        
+    </body>
+    <script>
+        const videoList = [
+            {
+                "videoTitle": "Talking Tech and AI with Google CEO Sundar Pichai!",
+                "channelName": "Marques Brownlee",
+                "views": "3.4M views",
+                "time": "6 months ago",
+                "thumbnail": "/youtube/thumbnail-1.webp",
+                "channelThumbnail": "/youtube/channel-1.jpg"
+            },
+            {
+                "videoTitle": "Exploring the Future of AI with OpenAI CEO Sam Altman",
+                "channelName": "Tech Insider",
+                "views": "2.1M views",
+                "time": "4 months ago",
+                "thumbnail": "/youtube/thumbnail-2.webp",
+                "channelThumbnail": "/youtube/channel-2.jpg"
+            },
+            {
+                "videoTitle": "The Rise of Electric Vehicles: What You Need to Know",
+                "channelName": "EV News",
+                "views": "1.8M views",
+                "time": "1 year ago",
+                "thumbnail": "/youtube/thumbnail-3.webp",
+                "channelThumbnail": "/youtube/channel-3.jpg"
+            },
+            {
+                "videoTitle": "Top 10 Programming Languages to Learn in 2023",
+                "channelName": "Code Academy",
+                "views": "900K views",
+                "time": "3 months ago",
+                "thumbnail": "/youtube/thumbnail-4.webp",
+                "channelThumbnail": "/youtube/channel-4.jpg"
+            },
+            {
+                "videoTitle": "How to Build a Gaming PC in 2023",
+                "channelName": "Tech Builders",
+                "views": "1.2M views",
+                "time": "5 months ago",
+                "thumbnail": "/youtube/thumbnail-5.webp",
+                "channelThumbnail": "/youtube/channel-5.jpg"
+            },
+            {
+                "videoTitle": "The Science Behind Black Holes Explained",
+                "channelName": "Astro World",
+                "views": "2.5M views",
+                "time": "8 months ago",
+                "thumbnail": "/youtube/thumbnail-6.webp",
+                "channelThumbnail": "/youtube/channel-6.jpg"
+            },
+            {
+                "videoTitle": "Mastering CSS Grid in 10 Minutes",
+                "channelName": "Frontend Guru",
+                "views": "750K views",
+                "time": "2 weeks ago",
+                "thumbnail": "/youtube/thumbnail-7.webp",
+                "channelThumbnail": "/youtube/channel-7.jpg"
+            },
+            {
+                "videoTitle": "The History of the Internet: From ARPANET to Today",
+                "channelName": "Tech History",
+                "views": "1.1M views",
+                "time": "1 year ago",
+                "thumbnail": "/youtube/thumbnail-8.webp",
+                "channelThumbnail": "/youtube/channel-8.jpg"
+            },
+            {
+                "videoTitle": "AI in Healthcare: Transforming the Industry",
+                "channelName": "HealthTech",
+                "views": "600K views",
+                "time": "6 months ago",
+                "thumbnail": "/youtube/thumbnail-9.webp",
+                "channelThumbnail": "/youtube/channel-9.jpg"
+            },
+            {
+                "videoTitle": "The Ultimate Guide to JavaScript Frameworks",
+                "channelName": "Dev World",
+                "views": "1.4M views",
+                "time": "3 months ago",
+                "thumbnail": "/youtube/thumbnail-10.webp",
+                "channelThumbnail": "/youtube/channel-10.jpg"
+            }
+        ];
+        const videos = document.querySelector('.videos');
+        const len = videoList.length;
+        for (let i = 0; i < len; i++){
+            videos.innerHTML += `
+            <div class="cards">
+            <div class="cards-picture">
+                <img class="picture" src="${videoList[i].thumbnail}">
+                 <div class= "time Arial">
+                            14:20
+                 </div>
+            </div>
+
+
+            <div class="gap">
+
+                <div class="av">
+                    <img class="ava" src='${videoList[i].channelThumbnail}'>
+                       
+                </div>
+
+                <div class="description">
+                    <p class="video-title">
+                        ${videoList[i].videoTitle}
+                    </p>
+                    <p class="stats">
+                        ${videoList[i].channelName}
+                    </p>
+                    <p class="stats">
+                        ${videoList[i].views} &#183; ${videoList[i].time}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+            `
+        }
+    </script>
+
+    
+    </html>

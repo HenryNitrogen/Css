@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            font-family: Arial;
+        }
+        .video-title {
+           font-family: Arial;
+           font-weight:bold;
+           font-size: 18px ;
+           width: 300px;
+           line-height: 24px;
+           margin-bottom: 15pxpx;
+        }
+        .stats{
+            color: grey;
+            margin-top: 0;
+            margin-bottom: 100px;
+
+        }
+        .description{
+            font-size: 14px;
+            color: grey;
+            background-color: red;
+            color: white;
+            text-align: center;
+            width: 600px;
+            padding: 20px 30px;
+            border-radius: 5px;
+        }
+        .daily{
+            font-family: Arial;
+            transition: text-decoration 1s, color 1s;
+        }
+        .daily:hover{
+            co 
+            text-decoration: underline;
+        }
+        .button{
+            background-color: white;
+            border-color: rgb(41, 41, 211);
+            border-width: 1px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border-style: solid;
+            color: rgb(41, 41, 211);
+            transition: backgroun d-color 1s, color 1s;
+        }
+        .button:hover{
+            background-color: rgb(41, 41, 211);
+            color: white;
+        }
+        .button:active{
+            background-color: rgb(41, 41, 211);
+            color: white;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <p class="video-title">Taking Tech and AI with Google CEO Sundar Pichai!</p>
+    <p class="stats"><span class="views">M views &#183; 6 months ago</span></p>
+    <p class="description">
+        In this episode of the podcast, Marques Brownlee sits down with Sundar Pichai, the CEO of Google and Alphabet. They discuss the future of technology, AI, and how Google is adapting to the changing landscape. Pichai shares his insights on the role of AI in our lives and how it can be used to improve our <span class="daily">daily experiences.</span>
+    </p>
+    <button class="button">clickme</button>
+    <script>
+        
+        let viewnum = 0
+        const views = document.querySelector('.views');
+        const button = document.querySelector('.button');
+        storedViews = localStorage.getItem("views")
+        if (storedViews) {
+            viewnum = parseInt(storedViews);
+        }
+        views.innerHTML = `${viewnum}M view${one(viewnum)} &#183; 6 months ago`;
+        function one(a){
+            if (a > 1){
+                return 's';
+            }
+            return '';
+        }
+        
+        button.addEventListener('click', () => {
+            viewnum++;
+            views.innerHTML = `${viewnum}M view${one(viewnum)} &#183; 6 months ago`;
+            localStorage.setItem('views', viewnum);
+        });
+    </script>
+</body>
+</html>
