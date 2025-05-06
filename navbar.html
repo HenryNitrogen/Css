@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Scroll Shrink</title>
+  <style>
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0 30px;
+    }
+
+    nav {
+      position: fixed;
+      opacity: 0.9;
+      background-color: black;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: 18px 20px;
+      border: 1px solid white;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      transform-origin: top center;
+      z-index: 1000;
+    }
+
+    nav.shrink {
+      transform: scale(0.85);
+      opacity: 0.7;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+
+    body {
+      margin-bottom: 1000px;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div style="margin-top: 100px;">
+    <h1>Welcome to My Website</h1>
+    <p>This is a sample paragraph to demonstrate the layout.</p>
+    <p>Lorem ipsum dolor sit amet...</p>
+    <!-- More content here -->
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('shrink');
+      } else {
+        navbar.classList.remove('shrink');
+      }
+    });
+  </script>
+</body>
+</html>
